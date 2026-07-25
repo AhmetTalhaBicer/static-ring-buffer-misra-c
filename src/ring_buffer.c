@@ -32,3 +32,32 @@ RingBufferStatus_t RingBuffer_Init(RingBuffer_t *const me) {
 
   return RING_BUFFER_OK;
 }
+
+RingBufferStatus_t RingBuffer_Push(RingBuffer_t *const me, uint8_t data) {
+  if (me == NULL) {
+    return RING_BUFFER_NULL_ERROR;
+  }
+  if (RingBuffer_IsFull(me)) {
+    return RING_BUFFER_FULL;
+  }
+
+  me->buffer[me->head] = data;
+  me->head = (me->head + 1U) & (RING_BUFFER_SIZE - 1U);
+  me->count++;
+
+  return RING_BUFFER_OK;
+}
+
+RingBufferStatus_t RingBuffer_Pop(RingBuffer_t *const me, uint8_t *const data) {
+  if ((me == NULL) || (data == NULL)) {
+    return RING_BUFFER_NULL_ERROR;
+  }
+  if (RingBuffer_IsEmpty(me)) {
+    return RING_BUFFER_EMPTY;
+  }
+  *data = me->buffer[me->tail];
+  me->tail = (me->tail + 1U) & (RING_BUFFER_SIZE - 1U);
+  me->count--;
+
+  return RING_BUFFER_OK;
+}
