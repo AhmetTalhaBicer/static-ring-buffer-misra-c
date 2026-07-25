@@ -1,0 +1,51 @@
+# ==========================================
+# C / Embedded Build Artifacts & Binaries
+# ==========================================
+*.o
+*.obj
+*.so
+*.dylib
+*.dll
+*.a
+*.lib
+*.elf
+*.bin
+*.hex
+*.out
+
+# Build Directories & Temporary Files
+build/
+bin/
+obj/
+*.d
+*.i
+*.s
+
+# ==========================================
+# Testing & Coverage Artifacts (Unity / gTest)
+# ==========================================
+*.gcda
+*.gcno
+*.gcov
+coverage/
+test_runner
+*.log
+
+# ==========================================
+# Static Code Analysis Artifacts (Cppcheck)
+# ==========================================
+*.plist
+cppcheck-result.xml
+
+# ==========================================
+# Editor & IDE Configs (Local Settings)
+# ==========================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+task.md
